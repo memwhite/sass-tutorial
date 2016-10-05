@@ -1,0 +1,101 @@
+//we want to import all the sass files into this main central file
+//these will import in the order you put them in
+
+
+//this will import reset.scss, variables.scss, and mixins.scss
+//don't need a more detailed path cuz it's in the same dir
+@import "reset";
+@import "variables";
+@import "mixins";
+
+
+#main-nav{
+  background: $deepBlue;
+  ul{
+    width: 100%;
+    @include clearFix;
+  }
+  li{
+    float: left;
+    //this spaces the elements out evenly across the top
+    width: (100% / 6);
+    //adding responsiveness on diff screen sizes
+    @include mQ(600px){
+      width: 100%;
+    }
+  }
+  a{
+    color: $offwhite;
+    text-decoration: none;
+    padding: 16px;
+    display: block;
+    text-align: center;
+    //added hover effect
+    &:hover{
+      //lighten is a built in SASS function
+      background: lighten($deepBlue, 6);
+    }
+  }
+}//end #main-nav
+
+
+
+section h1{
+  margin: 40px 0;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: $sectionHeading;
+  color: $deepBlue;
+}
+
+.lead-banner{
+  //this is how you call the mixin we created
+  @include banner;
+  text-align: right;
+}
+
+.lessons-banner{
+  @include banner;
+  text-align: left;
+  li{
+    text-transform: uppercase;
+    font-size: 20px;
+    max-width: 500px;
+    margin: 60px 0;
+  }
+}
+
+#services{
+  margin-bottom: 60px;
+
+  li{
+    float: left;
+    box-sizing: border-box;
+    text-align: center;
+    width: (100% / 3);
+  }
+  img{
+    width: 60%;
+    margin: 20px 20%;
+  }
+  a{
+    text-decoration: none;
+    color: $deepBlue;
+    font-weight: bold;
+    &:hover{
+      //complement is a built in SASS function
+      color: complement($deepBlue);
+    }
+  }
+  ul{
+    @include clearFix;
+    margin-bottom: 60px;
+  }
+}
+
+#projects li{
+  @include grid(4, 2%);
+  img{
+    width: 100%;
+  }
+}
